@@ -1,0 +1,10 @@
+openapi: 3.0.0
+info:
+  title: Wall
+  version: '1.0'
+servers:
+  - url: 'https://api.wall.one'
+    description: Production
+paths: {}
+components:
+  schemas: {}
