@@ -8,3 +8,8 @@ servers:
 paths: {}
 components:
   schemas: {}
+  securitySchemes:
+    Token:
+      name: X-Auth-Token
+      type: apiKey
+      in: header
