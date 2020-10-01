@@ -26,8 +26,65 @@ paths:
       description: Login user and get token.
       tags:
         - auth
+  /articles:
+    get:
+      summary: Get all articles
+      tags:
+        - article
+        - get
+        - all
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Article'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      - id: string
+                        title: string
+                        content: string
+                        image: string
+                        articleCategory:
+                          id: string
+                          title: string
+      operationId: get-articles
+      description: Get all articles
 components:
   schemas:
+    Model+Response+Article:
+      title: Model+Response+Article
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        content:
+          type: string
+        image:
+          type: string
+        articleCategory:
+          $ref: '#/components/schemas/Model+Response+ArticleCategory'
+    Model+Response+ArticleCategory:
+      title: Model+Response+ArticleCategory
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+    Response+Article:
+      title: Response+Article
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Article'
     AuthRequest:
       title: AuthRequest
       type: object
@@ -50,3 +107,7 @@ components:
       in: header
 tags:
   - name: auth
+  - name: article
+  - name: get
+  - name: all
+
