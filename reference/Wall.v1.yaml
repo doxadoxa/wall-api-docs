@@ -5,11 +5,48 @@ info:
 servers:
   - url: 'https://api.wall.one'
     description: Production
-paths: {}
+paths:
+  /auth/login:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-auth-login
+    post:
+      summary: Login
+      operationId: post-auth-login
+      responses:
+        '200':
+          description: OK
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AuthRequest'
+      description: Login user and get token.
+      tags:
+        - auth
 components:
-  schemas: {}
+  schemas:
+    AuthRequest:
+      title: AuthRequest
+      type: object
+      properties:
+        email:
+          type: string
+        password:
+          type: string
+      required:
+        - email
+        - password
+      x-examples:
+        example-1:
+          email: test@test.com
+          password: testtest
   securitySchemes:
     Token:
       name: X-Auth-Token
       type: apiKey
       in: header
+tags:
+  - name: auth
