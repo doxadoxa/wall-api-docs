@@ -102,7 +102,7 @@ components:
           password: testtest
   securitySchemes:
     Token:
-      name: X-Auth-Token
+      name: Authorization
       type: apiKey
       in: header
 tags:
@@ -110,4 +110,3 @@ tags:
   - name: article
   - name: get
   - name: all
-
