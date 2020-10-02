@@ -7,10 +7,6 @@ servers:
     description: Production
 paths:
   /auth/login:
-    get:
-      summary: Your GET endpoint
-      tags: []
-      operationId: get-auth-login
     post:
       summary: Login
       operationId: post-auth-login
@@ -75,6 +71,23 @@ paths:
                           title: string
       operationId: get-articles
       description: Get all articles
+  /register:
+    post:
+      summary: Register
+      operationId: post-register
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User+Resource'
+      description: Register new user.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Register+Request'
 components:
   schemas:
     Model+Response+Article:
@@ -139,6 +152,41 @@ components:
         - tokenType
         - expiresIn
       title: Auth+Response
+    Register+Request:
+      title: Register+Request
+      type: object
+      properties:
+        email:
+          type: string
+        name:
+          type: string
+        password:
+          type: string
+        passwordConfirmation:
+          type: string
+      required:
+        - email
+        - name
+        - password
+        - passwordConfirmation
+      description: Request for user registration.
+    Register+Response:
+      title: Register+Response
+      type: object
+      properties:
+        id:
+          type: string
+      description: Response after registration
+    User+Resource:
+      title: User+Short+Resource
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        email:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
