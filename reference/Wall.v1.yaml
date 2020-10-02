@@ -10,7 +10,6 @@ paths:
     get:
       summary: Your GET endpoint
       tags: []
-      responses: {}
       operationId: get-auth-login
     post:
       summary: Login
@@ -18,6 +17,25 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  accessToken:
+                    type: string
+                    minLength: 1
+                  tokenType:
+                    type: string
+                    minLength: 1
+                  expiresIn:
+                    type: number
+                required:
+                  - accessToken
+                  - tokenType
+                  - expiresIn
+              examples: {}
       requestBody:
         content:
           application/json:
@@ -85,8 +103,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Article'
-    AuthRequest:
-      title: AuthRequest
+    Auth+Request:
+      title: Auth+Request
       type: object
       properties:
         email:
@@ -100,6 +118,23 @@ components:
         example-1:
           email: test@test.com
           password: testtest
+    Auth+Response:
+      description: ''
+      type: object
+      properties:
+        accessToken:
+          type: string
+          minLength: 1
+        tokenType:
+          type: string
+          minLength: 1
+        expiresIn:
+          type: number
+      required:
+        - accessToken
+        - tokenType
+        - expiresIn
+      title: ''
   securitySchemes:
     Token:
       name: Authorization
