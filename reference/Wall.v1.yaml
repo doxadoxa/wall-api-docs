@@ -20,21 +20,7 @@ paths:
           content:
             application/json:
               schema:
-                description: ''
-                type: object
-                properties:
-                  accessToken:
-                    type: string
-                    minLength: 1
-                  tokenType:
-                    type: string
-                    minLength: 1
-                  expiresIn:
-                    type: number
-                required:
-                  - accessToken
-                  - tokenType
-                  - expiresIn
+                $ref: '#/components/schemas/Auth+Response'
               examples: {}
       requestBody:
         content:
@@ -119,7 +105,7 @@ components:
           email: test@test.com
           password: testtest
     Auth+Response:
-      description: ''
+      description: Response for auth requests.
       type: object
       properties:
         accessToken:
@@ -134,7 +120,7 @@ components:
         - accessToken
         - tokenType
         - expiresIn
-      title: ''
+      title: Auth+Response
   securitySchemes:
     Token:
       name: Authorization
