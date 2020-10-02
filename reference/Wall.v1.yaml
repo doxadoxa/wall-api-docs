@@ -88,6 +88,8 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/Register+Request'
+      tags:
+        - auth
 components:
   schemas:
     Model+Response+Article:
