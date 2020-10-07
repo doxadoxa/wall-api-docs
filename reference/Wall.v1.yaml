@@ -92,7 +92,7 @@ paths:
         - auth
   /stories:
     get:
-      summary: Your GET endpoint
+      summary: Get all stories
       tags:
         - story
         - get
