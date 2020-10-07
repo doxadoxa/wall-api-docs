@@ -93,7 +93,10 @@ paths:
   /stories:
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - story
+        - get
+        - all
       responses:
         '200':
           description: OK
@@ -269,3 +272,4 @@ tags:
   - name: article
   - name: get
   - name: all
+  - name: story
