@@ -90,6 +90,34 @@ paths:
               $ref: '#/components/schemas/Register+Request'
       tags:
         - auth
+  /stories:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Story'
+              examples:
+                example-1:
+                  value:
+                    data:
+                      - id: string
+                        title: string
+                        image: string
+                        isViewed: true
+                        publishedAt: string
+                        screens:
+                          id: string
+                          title: string
+                          image: string
+                          text: string
+                          actionText: string
+      operationId: get-stories
+      description: Get all stories
 components:
   schemas:
     Model+Response+Article:
@@ -106,6 +134,8 @@ components:
           type: string
         articleCategory:
           $ref: '#/components/schemas/Model+Response+ArticleCategory'
+      description: ''
+      x-examples: {}
     Model+Response+ArticleCategory:
       title: Model+Response+ArticleCategory
       type: object
@@ -122,6 +152,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Article'
+      x-examples: {}
     Auth+Request:
       title: Auth+Request
       type: object
@@ -189,6 +220,45 @@ components:
           type: string
         email:
           type: string
+    Model+Response+Story:
+      title: Model+Response+Story
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        image:
+          type: string
+        isViewed:
+          type: boolean
+        publishedAt:
+          type: string
+        screens:
+          $ref: '#/components/schemas/Model+Response+StoryScreen'
+    Model+Response+StoryScreen:
+      title: Model+Response+StoryScreen
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        image:
+          type: string
+        text:
+          type: string
+        actionText:
+          type: string
+    Response+Story:
+      title: Response+Story
+      type: object
+      x-examples: {}
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Story'
   securitySchemes:
     Token:
       name: Authorization
