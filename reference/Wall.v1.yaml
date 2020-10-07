@@ -238,7 +238,10 @@ components:
         publishedAt:
           type: string
         screens:
-          $ref: '#/components/schemas/Model+Response+StoryScreen'
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+StoryScreen'
+      x-examples: {}
     Model+Response+StoryScreen:
       title: Model+Response+StoryScreen
       type: object
