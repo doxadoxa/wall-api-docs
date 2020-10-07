@@ -259,7 +259,20 @@ components:
     Response+Story:
       title: Response+Story
       type: object
-      x-examples: {}
+      x-examples:
+        example-1:
+          data:
+            - id: string
+              title: string
+              image: string
+              isViewed: true
+              publishedAt: string
+              screens:
+                - id: string
+                  title: string
+                  image: string
+                  text: string
+                  actionText: string
       properties:
         data:
           type: array
