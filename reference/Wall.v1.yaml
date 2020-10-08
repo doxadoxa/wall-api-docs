@@ -58,17 +58,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response+Article'
-              examples:
-                example-1:
-                  value:
-                    data:
-                      - id: string
-                        title: string
-                        content: string
-                        image: string
-                        articleCategory:
-                          id: string
-                          title: string
+              examples: {}
       operationId: get-articles
       description: Get all articles
   /register:
@@ -121,6 +111,18 @@ paths:
                           actionText: string
       operationId: get-stories
       description: Get all stories
+  '/articles/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses: {}
+      operationId: get-articles-id
 components:
   schemas:
     Model+Response+Article:
@@ -147,15 +149,17 @@ components:
           type: string
         title:
           type: string
-    Response+Article:
-      title: Response+Article
+    Response+Articles:
+      title: Response+Articles
       type: object
+      x-examples: {}
       properties:
-        data:
+        result:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Article'
-      x-examples: {}
+        status:
+          type: string
     Auth+Request:
       title: Auth+Request
       type: object
@@ -278,6 +282,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Story'
+    Response+Article:
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+Article'
+      title: ''
   securitySchemes:
     Token:
       name: Authorization
