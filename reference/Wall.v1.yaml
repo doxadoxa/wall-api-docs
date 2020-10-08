@@ -131,7 +131,10 @@ paths:
         required: true
     get:
       summary: Get article
-      tags: []
+      tags:
+        - article
+        - get
+        - item
       responses:
         '200':
           description: OK
@@ -155,7 +158,10 @@ paths:
   /article-categories:
     get:
       summary: Get article categories
-      tags: []
+      tags:
+        - category
+        - get
+        - all
       responses:
         '200':
           description: OK
@@ -176,7 +182,10 @@ paths:
   /vpn/servers:
     get:
       summary: Get vpn servers
-      tags: []
+      tags:
+        - server
+        - get
+        - all
       responses:
         '200':
           description: OK
@@ -208,7 +217,10 @@ paths:
         required: true
     get:
       summary: Get server credential
-      tags: []
+      tags:
+        - credential
+        - get
+        - item
       responses:
         '200':
           description: OK
@@ -475,3 +487,7 @@ tags:
   - name: get
   - name: all
   - name: story
+  - name: category
+  - name: item
+  - name: server
+  - name: credential
