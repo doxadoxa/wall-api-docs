@@ -173,9 +173,9 @@ paths:
       operationId: get-categories
       description: Get article categories
     parameters: []
-  /servers:
+  /vpn/servers:
     get:
-      summary: Your GET endpoint
+      summary: Get vpn servers
       tags: []
       responses:
         '200':
@@ -197,6 +197,48 @@ paths:
                         latitude: string
                         longitude: string
       operationId: get-servers
+      description: Get vpn servers
+    parameters: []
+  '/vpn/servers/{id}/credentials':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get server credential
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Credential'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      id: string
+                      server:
+                        id: string
+                        country: string
+                        city: string
+                        label: string
+                        status: string
+                        latitude: string
+                        longitude: string
+                      protocol: string
+                      status: string
+      operationId: get-vpn-servers-id
+      description: Get server credential
+      parameters:
+        - schema:
+            type: string
+          in: query
+          name: protocol
 components:
   schemas:
     Model+Response+Article:
@@ -402,6 +444,26 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Server'
+    Model+Response+Credential:
+      title: Model+Response+Credential
+      type: object
+      properties:
+        id:
+          type: string
+        server:
+          $ref: '#/components/schemas/Model+Response+Server'
+        protocol:
+          type: string
+        status:
+          type: string
+    Response+Credential:
+      title: Response+Credential
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+Credential'
   securitySchemes:
     Token:
       name: Authorization
