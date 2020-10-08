@@ -57,8 +57,19 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response+Article'
-              examples: {}
+                $ref: '#/components/schemas/Response+Articles'
+              examples:
+                example-1:
+                  value:
+                    result:
+                      - id: string
+                        title: string
+                        content: string
+                        image: string
+                        articleCategory:
+                          id: string
+                          title: string
+                    status: string
       operationId: get-articles
       description: Get all articles
   /register:
@@ -119,9 +130,27 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get article
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Article'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      id: string
+                      title: string
+                      content: string
+                      image: string
+                      articleCategory:
+                        id: string
+                        title: string
       operationId: get-articles-id
 components:
   schemas:
