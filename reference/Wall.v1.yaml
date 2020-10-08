@@ -115,11 +115,11 @@ paths:
                         isViewed: true
                         publishedAt: string
                         screens:
-                          id: string
-                          title: string
-                          image: string
-                          text: string
-                          actionText: string
+                          - id: string
+                            title: string
+                            image: string
+                            text: string
+                            actionText: string
       operationId: get-stories
       description: Get all stories
   '/articles/{id}':
