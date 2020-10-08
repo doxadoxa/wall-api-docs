@@ -152,6 +152,51 @@ paths:
                         id: string
                         title: string
       operationId: get-articles-id
+  /article-categories:
+    get:
+      summary: Get article categories
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+ArticleCategories'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      - id: string
+                        title: string
+      operationId: get-categories
+      description: Get article categories
+    parameters: []
+  /servers:
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Servers'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      - id: string
+                        country: string
+                        city: string
+                        label: string
+                        status: string
+                        latitude: string
+                        longitude: string
+      operationId: get-servers
 components:
   schemas:
     Model+Response+Article:
@@ -319,6 +364,44 @@ components:
         result:
           $ref: '#/components/schemas/Model+Response+Article'
       title: ''
+    Response+ArticleCategories:
+      title: Response+ArticleCategories
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+ArticleCategory'
+    Model+Response+Server:
+      title: Model+Response+Server
+      type: object
+      properties:
+        id:
+          type: string
+        country:
+          type: string
+        city:
+          type: string
+        label:
+          type: string
+        status:
+          type: string
+        latitude:
+          type: string
+        longitude:
+          type: string
+    Response+Servers:
+      title: Response+Servers
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Server'
   securitySchemes:
     Token:
       name: Authorization
