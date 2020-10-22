@@ -268,8 +268,15 @@ paths:
     get:
       summary: Get story
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Story'
       operationId: get-stories-id
+      description: Get story by id
 components:
   schemas:
     Model+Response+Article:
@@ -425,10 +432,12 @@ components:
                   text: string
                   actionText: string
       properties:
-        data:
+        result:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Story'
+        status:
+          type: string
     Response+Article:
       type: object
       properties:
@@ -513,6 +522,14 @@ components:
           type: boolean
         createdAt:
           type: integer
+    Response+Story:
+      title: Response+Story
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Model+Response+Story'
+        status:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
