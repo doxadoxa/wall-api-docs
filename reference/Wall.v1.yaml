@@ -446,6 +446,8 @@ components:
           type: string
         longitude:
           type: string
+        ipAddress:
+          type: string
     Response+Servers:
       title: Response+Servers
       type: object
