@@ -104,7 +104,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Response+Story'
+                $ref: '#/components/schemas/Response+Stories'
               examples:
                 example-1:
                   value:
@@ -251,6 +251,25 @@ paths:
             type: string
           in: query
           name: protocol
+  /notifications:
+    get:
+      summary: Notifications
+      tags: []
+      responses: {}
+      operationId: get-notifications
+      description: Get 30 last notifications
+  '/stories/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get story
+      tags: []
+      responses: {}
+      operationId: get-stories-id
 components:
   schemas:
     Model+Response+Article:
@@ -388,8 +407,8 @@ components:
           type: string
         actionText:
           type: string
-    Response+Story:
-      title: Response+Story
+    Response+Stories:
+      title: Response+Stories
       type: object
       x-examples:
         example-1:
@@ -478,6 +497,22 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+Credential'
+    Model+Response+Notification:
+      title: Model+Response+Notification
+      type: object
+      properties:
+        id:
+          type: string
+        title:
+          type: string
+        message:
+          type: string
+        icon:
+          type: string
+        isViewed:
+          type: boolean
+        createdAt:
+          type: integer
   securitySchemes:
     Token:
       name: Authorization
