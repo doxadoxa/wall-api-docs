@@ -253,11 +253,28 @@ paths:
           name: protocol
   /notifications:
     get:
-      summary: Notifications
+      summary: Get notifications
       tags: []
-      responses: {}
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Notifications'
       operationId: get-notifications
-      description: Get 30 last notifications
+      description: Get last 30 notifications
+    post:
+      summary: View notifications
+      operationId: post-notifications
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Notifications'
+      description: View all notifications
   '/stories/{id}':
     parameters:
       - schema:
@@ -528,6 +545,16 @@ components:
       properties:
         result:
           $ref: '#/components/schemas/Model+Response+Story'
+        status:
+          type: string
+    Response+Notifications:
+      title: Response+Notifications
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Notification'
         status:
           type: string
   securitySchemes:
