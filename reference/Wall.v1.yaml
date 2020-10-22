@@ -254,7 +254,10 @@ paths:
   /notifications:
     get:
       summary: Get notifications
-      tags: []
+      tags:
+        - notifications
+        - get
+        - all
       responses:
         '200':
           description: OK
@@ -284,7 +287,10 @@ paths:
         required: true
     get:
       summary: Get story
-      tags: []
+      tags:
+        - story
+        - get
+        - item
       responses:
         '200':
           description: OK
@@ -572,3 +578,4 @@ tags:
   - name: item
   - name: server
   - name: credential
+  - name: notifications
