@@ -278,6 +278,10 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response+Notifications'
       description: View all notifications
+      tags:
+        - notifications
+        - all
+        - get
   '/stories/{id}':
     parameters:
       - schema:
