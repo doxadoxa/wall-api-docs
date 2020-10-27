@@ -665,6 +665,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Response+Lesson'
+      x-examples: {}
     Model+Response+Lesson:
       title: Model+Response+Lesson
       type: object
@@ -696,9 +697,16 @@ components:
         isPassed:
           type: string
     Response+Course:
-      title: Model+Response+Course
+      title: Response+Course
       type: object
       x-examples: {}
+      properties:
+        result:
+          type: string
+        status:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Course'
   securitySchemes:
     Token:
       name: Authorization
