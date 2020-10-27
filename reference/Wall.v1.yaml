@@ -346,6 +346,19 @@ paths:
               $ref: '#/components/schemas/Password+Change+Request'
       tags:
         - password
+  /courses:
+    get:
+      summary: Get all courses
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Course'
+              examples: {}
+      operationId: get-courses
 components:
   schemas:
     Model+Response+Article:
@@ -642,6 +655,50 @@ components:
       properties:
         message:
           type: string
+    Model+Response+Course:
+      title: Model+Response+Course
+      type: object
+      properties:
+        title:
+          type: string
+        lessons:
+          type: array
+          items:
+            $ref: '#/components/schemas/Response+Lesson'
+    Model+Response+Lesson:
+      title: Model+Response+Lesson
+      type: object
+      properties:
+        courseId:
+          type: string
+        order:
+          type: string
+        hint:
+          type: string
+        content:
+          type: string
+        primaryImage:
+          type: string
+        chapters:
+          type: array
+          items:
+            $ref: '#/components/schemas/Response+Chapter'
+    Model+Response+Chapter:
+      title: Model+Response+Chapter
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        order:
+          type: string
+        isPassed:
+          type: string
+    Response+Course:
+      title: Model+Response+Course
+      type: object
+      x-examples: {}
   securitySchemes:
     Token:
       name: Authorization
