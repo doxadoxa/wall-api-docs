@@ -349,7 +349,8 @@ paths:
   /courses:
     get:
       summary: Get all courses
-      tags: []
+      tags:
+        - course
       responses:
         '200':
           description: OK
@@ -766,3 +767,4 @@ tags:
   - name: notifications
   - name: Password
   - name: password
+  - name: course
