@@ -380,6 +380,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response+Lesson'
       operationId: get-lessons-id
+  '/lesson-chapters/{id}/pass':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-lesson-chapters-id-pass
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Chapter'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      title: string
+                      content: string
+                      order: string
+                      isPassed: string
+      tags:
+        - lesson-chapter
 components:
   schemas:
     Model+Response+Article:
@@ -777,6 +805,14 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+Lesson'
+    Response+Chapter:
+      title: Response+Chapter
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+Chapter'
   securitySchemes:
     Token:
       name: Authorization
@@ -797,3 +833,4 @@ tags:
   - name: password
   - name: course
   - name: lesson
+  - name: lesson-chapter
