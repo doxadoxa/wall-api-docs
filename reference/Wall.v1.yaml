@@ -658,20 +658,41 @@ components:
     Model+Response+Course:
       title: Model+Response+Course
       type: object
+      x-examples:
+        example-1:
+          title: string
+          lessons:
+            - order: string
+              hint: string
+              content: string
+              primaryImage: string
+              chapters:
+                - title: string
+                  content: string
+                  order: string
+                  isPassed: string
       properties:
         title:
           type: string
         lessons:
           type: array
           items:
-            $ref: '#/components/schemas/Response+Lesson'
-      x-examples: {}
+            $ref: '#/components/schemas/Model+Response+Lesson'
     Model+Response+Lesson:
       title: Model+Response+Lesson
       type: object
+      x-examples:
+        example-1:
+          order: string
+          hint: string
+          content: string
+          primaryImage: string
+          chapters:
+            - title: string
+              content: string
+              order: string
+              isPassed: string
       properties:
-        courseId:
-          type: string
         order:
           type: string
         hint:
@@ -683,7 +704,7 @@ components:
         chapters:
           type: array
           items:
-            $ref: '#/components/schemas/Response+Chapter'
+            $ref: '#/components/schemas/Model+Response+Chapter'
     Model+Response+Chapter:
       title: Model+Response+Chapter
       type: object
@@ -696,10 +717,30 @@ components:
           type: string
         isPassed:
           type: string
+      x-examples:
+        example-1:
+          title: string
+          content: string
+          order: string
+          isPassed: string
     Response+Course:
       title: Response+Course
       type: object
-      x-examples: {}
+      x-examples:
+        example-1:
+          result: string
+          status:
+            - title: string
+              lessons:
+                - order: string
+                  hint: string
+                  content: string
+                  primaryImage: string
+                  chapters:
+                    - title: string
+                      content: string
+                      order: string
+                      isPassed: string
       properties:
         result:
           type: string
