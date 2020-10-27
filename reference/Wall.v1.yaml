@@ -360,6 +360,26 @@ paths:
                 $ref: '#/components/schemas/Response+Course'
               examples: {}
       operationId: get-courses
+  '/lessons/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Get lesson by id
+      tags:
+        - lesson
+        - get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Lesson'
+      operationId: get-lessons-id
 components:
   schemas:
     Model+Response+Article:
@@ -749,6 +769,14 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Course'
+    Response+Lesson:
+      title: Response+Lesson
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+Lesson'
   securitySchemes:
     Token:
       name: Authorization
@@ -768,3 +796,4 @@ tags:
   - name: Password
   - name: password
   - name: course
+  - name: lesson
