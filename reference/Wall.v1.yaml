@@ -726,7 +726,7 @@ components:
         lessons:
           type: array
           items:
-            $ref: '#/components/schemas/Model+Response+Lesson'
+            $ref: '#/components/schemas/Model+Response+Short+Lesson'
     Model+Response+Full+Lesson:
       title: Model+Response+Full+Lesson
       type: object
@@ -753,7 +753,7 @@ components:
         chapters:
           type: array
           items:
-            $ref: '#/components/schemas/Model+Response+Chapter'
+            $ref: '#/components/schemas/Model+Response+Full+Chapter'
     Model+Response+Short+Lesson:
       title: Model+Response+Short+Lesson
       type: object
@@ -780,7 +780,7 @@ components:
         chapters:
           type: array
           items:
-            $ref: '#/components/schemas/Model+Response+Chapter'
+            $ref: '#/components/schemas/Model+Response+Short+Chapter'
     Model+Response+Full+Chapter:
       title: Model+Response+Full+Chapter
       type: object
@@ -802,6 +802,11 @@ components:
     Model+Response+Short+Chapter:
       title: Model+Response+Short+Chapter
       type: object
+      x-examples:
+        example-1:
+          title: string
+          content: string
+          order: string
       properties:
         title:
           type: string
@@ -809,13 +814,6 @@ components:
           type: string
         order:
           type: string
-        isPassed:
-          type: string
-      x-examples:
-        example-1:
-          title: string
-          content: string
-          order: string
     Response+Course:
       title: Response+Course
       type: object
@@ -848,7 +846,7 @@ components:
         status:
           type: string
         result:
-          $ref: '#/components/schemas/Model+Response+Lesson'
+          $ref: '#/components/schemas/Model+Response+Full+Lesson'
     Response+Chapter:
       title: Response+Chapter
       type: object
