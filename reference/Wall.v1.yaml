@@ -305,27 +305,20 @@ paths:
       operationId: get-stories-id
       description: Get story by id
   /password/reset:
-    get:
-      summary: Password reset
-      tags:
-        - Password
+    post:
+      summary: ''
+      operationId: post-password-reset
       responses:
         '200':
           description: OK
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
-            application/xml:
-              schema:
                 $ref: '#/components/schemas/Password+Reset+Response'
               examples:
                 example-1:
                   value:
                     message: string
-      operationId: get-password-reset
-      description: Password reset
       requestBody:
         content:
           application/json:
@@ -335,6 +328,24 @@ paths:
               example-1:
                 value:
                   email: user@example.com
+  /password/change:
+    post:
+      summary: Password change request
+      operationId: post-password-change
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Password+Change+Response'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Password+Change+Request'
+      tags:
+        - password
 components:
   schemas:
     Model+Response+Article:
@@ -613,6 +624,24 @@ components:
       properties:
         message:
           type: string
+    Password+Change+Request:
+      title: Password+Change+Request
+      type: object
+      properties:
+        email:
+          type: string
+        token:
+          type: string
+        password:
+          type: string
+        passwordConfirmation:
+          type: string
+    Password+Change+Response:
+      title: Password+Change+Response
+      type: object
+      properties:
+        message:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
@@ -630,3 +659,4 @@ tags:
   - name: credential
   - name: notifications
   - name: Password
+  - name: password
