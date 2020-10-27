@@ -304,6 +304,37 @@ paths:
                 $ref: '#/components/schemas/Response+Story'
       operationId: get-stories-id
       description: Get story by id
+  /password/reset:
+    get:
+      summary: Password reset
+      tags:
+        - Password
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Password+Reset+Response'
+              examples:
+                example-1:
+                  value:
+                    message: string
+      operationId: get-password-reset
+      description: Password reset
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Password+Reset+Request'
+            examples:
+              example-1:
+                value:
+                  email: user@example.com
 components:
   schemas:
     Model+Response+Article:
@@ -567,6 +598,21 @@ components:
             $ref: '#/components/schemas/Model+Response+Notification'
         status:
           type: string
+    Password+Reset+Request:
+      title: Password+Reset+Request
+      type: object
+      properties:
+        email:
+          type: string
+          format: email
+      required:
+        - email
+    Password+Reset+Response:
+      title: Password+Reset+Response
+      type: object
+      properties:
+        message:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
@@ -583,3 +629,4 @@ tags:
   - name: server
   - name: credential
   - name: notifications
+  - name: Password
