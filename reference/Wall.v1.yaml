@@ -416,7 +416,7 @@ paths:
         in: path
         required: true
     get:
-      summary: Your GET endpoint
+      summary: Get quiz by id
       tags:
         - quiz
         - get
