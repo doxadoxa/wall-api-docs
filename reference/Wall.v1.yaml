@@ -727,6 +727,8 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+Short+Lesson'
+        quiz:
+          $ref: '#/components/schemas/Model+Response+Short+Quiz'
     Model+Response+Full+Lesson:
       title: Model+Response+Full+Lesson
       type: object
@@ -847,6 +849,8 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+Full+Lesson'
+        quiz:
+          $ref: '#/components/schemas/Model+Response+Short+Quiz'
     Response+Chapter:
       title: Response+Chapter
       type: object
@@ -855,6 +859,53 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+Chapter'
+    Model+Response+Quiz:
+      title: Model+Response+Quiz
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        quizableType:
+          type: string
+        quizableId:
+          type: string
+        questions:
+          type: string
+      description: ''
+    Model+Response+Short+Quiz:
+      title: Model+Response+Short+Quiz
+      type: object
+      properties:
+        title:
+          type: string
+        content:
+          type: string
+        quizableType:
+          type: string
+        quizableId:
+          type: string
+    Model+Response+QuizQuestion:
+      title: Model+Response+QuizQuestion
+      type: object
+      properties:
+        content:
+          type: string
+        order:
+          type: string
+        correctMessage:
+          type: string
+        inCorrectMessage:
+          type: string
+    Response+Quiz:
+      title: Response+Quiz
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+Quiz'
   securitySchemes:
     Token:
       name: Authorization
