@@ -425,7 +425,20 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response+Quiz'
-              examples: {}
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      title: string
+                      content: string
+                      quizableType: string
+                      quizableId: string
+                      questions:
+                        - content: string
+                          order: string
+                          correctMessage: string
+                          inCorrectMessage: string
       operationId: get-quizzes-id
 components:
   schemas:
