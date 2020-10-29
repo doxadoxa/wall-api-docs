@@ -417,7 +417,9 @@ paths:
         required: true
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - quiz
+        - get
       responses:
         '200':
           description: OK
@@ -961,3 +963,4 @@ tags:
   - name: course
   - name: lesson
   - name: lesson-chapter
+  - name: quiz
