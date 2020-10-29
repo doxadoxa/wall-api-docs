@@ -408,6 +408,25 @@ paths:
                       isPassed: string
       tags:
         - lesson-chapter
+  '/quizzes/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    get:
+      summary: Your GET endpoint
+      tags: []
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Quiz'
+              examples: {}
+      operationId: get-quizzes-id
 components:
   schemas:
     Model+Response+Article:
@@ -862,6 +881,7 @@ components:
     Model+Response+Quiz:
       title: Model+Response+Quiz
       type: object
+      description: ''
       properties:
         title:
           type: string
@@ -872,8 +892,9 @@ components:
         quizableId:
           type: string
         questions:
-          type: string
-      description: ''
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+QuizQuestion'
     Model+Response+Short+Quiz:
       title: Model+Response+Short+Quiz
       type: object
