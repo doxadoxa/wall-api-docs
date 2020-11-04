@@ -497,6 +497,7 @@ components:
     Auth+Response:
       description: Response for auth requests.
       type: object
+      title: Auth+Response
       properties:
         accessToken:
           type: string
@@ -506,11 +507,12 @@ components:
           minLength: 1
         expiresIn:
           type: number
+        user:
+          $ref: '#/components/schemas/User+Resource'
       required:
         - accessToken
         - tokenType
         - expiresIn
-      title: Auth+Response
     Register+Request:
       title: Register+Request
       type: object
