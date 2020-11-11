@@ -442,6 +442,20 @@ paths:
                           correctMessage: string
                           inCorrectMessage: string
       operationId: get-quizzes-id
+  /courses/progress:
+    get:
+      summary: Your GET endpoint
+      tags:
+        - course
+        - get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Progress'
+      operationId: get-courses-progress
 components:
   schemas:
     Model+Response+Article:
@@ -944,6 +958,60 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+Quiz'
+    Model+Response+Progress:
+      title: Model+Response+Progress
+      type: object
+      properties:
+        id:
+          type: integer
+        lessons:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              chapterProgress:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  finished:
+                    type: integer
+              quizProgress:
+                type: object
+                properties:
+                  tries:
+                    type: integer
+                  progress:
+                    type: object
+                    properties:
+                      result:
+                        type: integer
+                      max:
+                        type: integer
+        quizProgress:
+          type: object
+          properties:
+            tries:
+              type: integer
+            progress:
+              type: object
+              properties:
+                result:
+                  type: integer
+                max:
+                  type: integer
+    Response+Progress:
+      title: Response+Progress
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Progress'
+        status:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
