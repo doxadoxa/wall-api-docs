@@ -444,10 +444,11 @@ paths:
       operationId: get-quizzes-id
   /courses/progress:
     get:
-      summary: Your GET endpoint
+      summary: Get course progress
       tags:
         - course
         - get
+        - progress
       responses:
         '200':
           description: OK
@@ -1034,3 +1035,4 @@ tags:
   - name: lesson
   - name: lesson-chapter
   - name: quiz
+  - name: progress
