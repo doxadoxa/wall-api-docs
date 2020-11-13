@@ -886,12 +886,17 @@ components:
                       order: string
                       isPassed: string
       properties:
-        result:
-          type: string
         status:
-          type: array
-          items:
-            $ref: '#/components/schemas/Model+Response+Course'
+          type: string
+        result:
+          type: object
+          properties:
+            courses:
+              type: array
+              items:
+                $ref: '#/components/schemas/Model+Response+Course'
+            updatedAt:
+              type: integer
     Response+Lesson:
       title: Response+Lesson
       type: object
