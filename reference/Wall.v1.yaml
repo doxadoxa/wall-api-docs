@@ -463,6 +463,22 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response+Progress'
       operationId: get-courses-progress
+    post:
+      summary: ''
+      operationId: post-courses-progress
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request-Progress'
+      parameters: []
+      tags:
+        - course
+        - post
+        - progress
+      description: ''
 components:
   schemas:
     Model+Response+Article:
@@ -1024,6 +1040,9 @@ components:
             $ref: '#/components/schemas/Model+Response+Progress'
         status:
           type: string
+    Request-Progress:
+      $ref: '#/components/schemas/Model+Response+Progress'
+      description: Progress request
   securitySchemes:
     Token:
       name: Authorization
@@ -1049,3 +1068,4 @@ tags:
   - name: progress
   - name: reset
   - name: change
+  - name: post
