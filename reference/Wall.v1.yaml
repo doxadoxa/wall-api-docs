@@ -328,6 +328,10 @@ paths:
               example-1:
                 value:
                   email: user@example.com
+      tags:
+        - auth
+        - password
+        - reset
   /password/change:
     post:
       summary: Password change request
@@ -346,6 +350,8 @@ paths:
               $ref: '#/components/schemas/Password+Change+Request'
       tags:
         - password
+        - auth
+        - change
   /courses:
     get:
       summary: Get all courses
@@ -1041,3 +1047,5 @@ tags:
   - name: lesson-chapter
   - name: quiz
   - name: progress
+  - name: reset
+  - name: change
