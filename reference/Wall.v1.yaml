@@ -464,7 +464,7 @@ paths:
                 $ref: '#/components/schemas/Response+Progress'
       operationId: get-courses-progress
     post:
-      summary: ''
+      summary: Update progress
       operationId: post-courses-progress
       responses:
         '200':
