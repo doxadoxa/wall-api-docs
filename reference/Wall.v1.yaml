@@ -472,7 +472,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Request-Progress'
+                $ref: '#/components/schemas/Request+Progress'
       parameters: []
       tags:
         - course
@@ -936,7 +936,7 @@ components:
         status:
           type: string
         result:
-          $ref: '#/components/schemas/Model+Response+Chapter'
+          $ref: '#/components/schemas/Model+Response+Full+Chapter'
     Model+Response+Quiz:
       title: Model+Response+Quiz
       type: object
@@ -1030,6 +1030,50 @@ components:
                   type: integer
                 max:
                   type: integer
+    Model+Request+Progress:
+      title: Model+Request+Progress
+      type: object
+      properties:
+        id:
+          type: integer
+        lessons:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              chapterProgress:
+                type: object
+                properties:
+                  total:
+                    type: integer
+                  finished:
+                    type: integer
+              quizProgress:
+                type: object
+                properties:
+                  tries:
+                    type: integer
+                  progress:
+                    type: object
+                    properties:
+                      result:
+                        type: integer
+                      max:
+                        type: integer
+        quizProgress:
+          type: object
+          properties:
+            tries:
+              type: integer
+            progress:
+              type: object
+              properties:
+                result:
+                  type: integer
+                max:
+                  type: integer
     Response+Progress:
       title: Response+Progress
       type: object
@@ -1040,9 +1084,8 @@ components:
             $ref: '#/components/schemas/Model+Response+Progress'
         status:
           type: string
-    Request-Progress:
-      $ref: '#/components/schemas/Model+Response+Progress'
-      description: Progress request
+    Request+Progress:
+      $ref: '#/components/schemas/Model+Request+Progress'
   securitySchemes:
     Token:
       name: Authorization
