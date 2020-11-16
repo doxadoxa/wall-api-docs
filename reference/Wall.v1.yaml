@@ -349,8 +349,8 @@ paths:
             schema:
               $ref: '#/components/schemas/Password+Change+Request'
       tags:
-        - password
         - auth
+        - password
         - change
   /courses:
     get:
