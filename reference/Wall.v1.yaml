@@ -479,6 +479,19 @@ paths:
         - post
         - progress
       description: ''
+  /vpn/connect:
+    post:
+      summary: Connect to VPN
+      operationId: post-vpn-connect
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Vpn+Connect'
+              examples: {}
+      description: Connect to VPN with less connections count
 components:
   schemas:
     Model+Response+Article:
@@ -1086,6 +1099,29 @@ components:
           type: string
     Request+Progress:
       $ref: '#/components/schemas/Model+Request+Progress'
+    Response+Vpn+Connect:
+      title: Response+Vpn+Connect
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Model+Response+Vpn+Connect'
+        status:
+          type: string
+    Model+Response+Vpn+Connect:
+      title: Model+Response+Vpn+Connect
+      type: object
+      properties:
+        server:
+          $ref: '#/components/schemas/Model+Response+Server'
+        credentials:
+          type: object
+          properties:
+            login:
+              type: string
+            password:
+              type: string
+            expiredAt:
+              type: string
   securitySchemes:
     Token:
       name: Authorization
@@ -1112,3 +1148,4 @@ tags:
   - name: reset
   - name: change
   - name: post
+  - name: vpn
