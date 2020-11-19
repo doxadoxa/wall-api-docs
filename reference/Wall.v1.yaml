@@ -503,7 +503,7 @@ paths:
         in: path
         required: true
     post:
-      summary: ''
+      summary: Connect to VPN by country
       operationId: post-vpn-connect-country
       responses:
         '200':
