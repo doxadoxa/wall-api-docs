@@ -495,6 +495,28 @@ paths:
       tags:
         - vpn
         - post
+  '/vpn/connect/{country}':
+    parameters:
+      - schema:
+          type: string
+        name: country
+        in: path
+        required: true
+    post:
+      summary: ''
+      operationId: post-vpn-connect-country
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Vpn+Connect'
+              examples: {}
+      description: Connect to VPN by country with less connections count
+      tags:
+        - vpn
+        - post
 components:
   schemas:
     Model+Response+Article:
