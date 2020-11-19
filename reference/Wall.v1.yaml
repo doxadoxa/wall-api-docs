@@ -492,6 +492,9 @@ paths:
                 $ref: '#/components/schemas/Response+Vpn+Connect'
               examples: {}
       description: Connect to VPN with less connections count
+      tags:
+        - vpn
+        - post
 components:
   schemas:
     Model+Response+Article:
