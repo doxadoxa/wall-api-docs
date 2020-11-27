@@ -517,6 +517,60 @@ paths:
       tags:
         - vpn
         - post
+  /guards:
+    get:
+      summary: Get all guards
+      tags:
+        - guards
+      responses: {}
+      operationId: get-guards
+      description: Get all guards.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Model+Response+Guard'
+  '/guards/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    post:
+      summary: Connect guard
+      operationId: post-guards-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Model+GuardConnection+Response'
+      description: Connect to guard
+      tags:
+        - guards
+    delete:
+      summary: Disconnect guard
+      operationId: delete-guards-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                description: ''
+                type: object
+                properties:
+                  disconnected:
+                    type: boolean
+                required:
+                  - disconnected
+      description: ''
+      tags:
+        - guards
 components:
   schemas:
     Model+Response+Article:
@@ -1147,6 +1201,134 @@ components:
               type: string
             expiredAt:
               type: string
+    Model+Response+Guard:
+      description: Full Guard Response
+      type: object
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+          minLength: 1
+        label:
+          type: string
+          minLength: 1
+        icon:
+          type: string
+          minLength: 1
+        iconColor:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        shortDescription:
+          type: string
+          minLength: 1
+        status:
+          type: number
+        type:
+          type: number
+        state:
+          type: number
+        settings:
+          type: object
+          required:
+            - jsFramework
+            - authUrl
+            - homeUrl
+            - features
+          properties:
+            jsFramework:
+              type: string
+              minLength: 1
+            authUrl:
+              type: string
+              minLength: 1
+            homeUrl:
+              type: string
+              minLength: 1
+            features:
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  type:
+                    type: number
+                  title:
+                    type: string
+                    minLength: 1
+                  iconLabel:
+                    type: string
+                    minLength: 1
+                  image:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                  actionText:
+                    type: string
+                    minLength: 1
+                  jsFrameworkFunction:
+                    type: string
+                    minLength: 1
+                  options:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        content:
+                          type: string
+                          minLength: 1
+                        value:
+                          type: number
+                      required:
+                        - content
+                        - value
+                  allowedPlans:
+                    type: array
+                    items:
+                      type: object
+                required:
+                  - id
+                  - type
+                  - title
+                  - iconLabel
+                  - image
+                  - description
+                  - actionText
+                  - jsFrameworkFunction
+      required:
+        - id
+        - title
+        - label
+        - icon
+        - iconColor
+        - description
+        - shortDescription
+        - status
+        - type
+        - state
+        - settings
+      title: Model+Response+Guard
+    Model+GuardConnection+Response:
+      title: Model+GuardConnection+Response
+      type: object
+      description: ''
+      properties:
+        guardId:
+          type: integer
+        status:
+          type: integer
+          description: |
+            Мутно, но это тоже самое, что state в Guard модели
   securitySchemes:
     Token:
       name: Authorization
@@ -1174,3 +1356,4 @@ tags:
   - name: change
   - name: post
   - name: vpn
+  - name: guards
