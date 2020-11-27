@@ -1204,6 +1204,7 @@ components:
     Model+Response+Guard:
       description: Full Guard Response
       type: object
+      title: Model+Response+Guard
       properties:
         id:
           type: number
@@ -1305,6 +1306,17 @@ components:
                   - description
                   - actionText
                   - jsFrameworkFunction
+        onboarding:
+          type: object
+          properties:
+            title:
+              type: string
+            content:
+              type: string
+            actionText:
+              type: string
+            image:
+              type: string
       required:
         - id
         - title
@@ -1317,7 +1329,6 @@ components:
         - type
         - state
         - settings
-      title: Model+Response+Guard
     Model+GuardConnection+Response:
       title: Model+GuardConnection+Response
       type: object
