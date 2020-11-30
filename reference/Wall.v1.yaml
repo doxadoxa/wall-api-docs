@@ -643,7 +643,7 @@ paths:
         in: path
         required: true
     delete:
-      summary: ''
+      summary: Delete user data breach
       operationId: delete-guards-data-breach-id
       responses:
         '200':
