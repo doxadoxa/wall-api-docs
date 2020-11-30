@@ -587,7 +587,7 @@ paths:
       operationId: get-achievements
   /guards/data-breach:
     get:
-      summary: User data breaches
+      summary: Get user data breaches
       tags:
         - get
         - data-breach
@@ -613,7 +613,7 @@ paths:
       description: Get user data breaches
     parameters: []
     post:
-      summary: ''
+      summary: Create user data breach
       operationId: post-guards-data-breach
       responses:
         '200':
@@ -621,8 +621,7 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties: {}
+                $ref: '#/components/schemas/Response+UserDataBreach'
       description: Create user data breach
       tags:
         - post
@@ -1482,6 +1481,24 @@ components:
       properties:
         email:
           type: string
+    Response+UserDataBreach:
+      title: Response+UserDataBreach
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+UserDataBreach'
+      x-examples:
+        example-1:
+          status: string
+          result:
+            id: string
+            email: string
+            status: 0
+            types:
+              - string
+            createdAt: 0
   securitySchemes:
     Token:
       name: Authorization
