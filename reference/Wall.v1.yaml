@@ -587,7 +587,7 @@ paths:
       operationId: get-achievements
   /guards/data-breach:
     get:
-      summary: Get  user data breaches
+      summary: User data breaches
       tags:
         - get
         - data-breach
@@ -610,7 +610,18 @@ paths:
                           - string
                         createdAt: 0
       operationId: get-guards-data-breach
+      description: Get user data breaches
     parameters: []
+    post:
+      summary: ''
+      operationId: post-guards-data-breach
+      responses:
+        '200':
+          description: OK
+      description: Create user data breach
+      tags:
+        - post
+        - data-breach
 components:
   schemas:
     Model+Response+Article:
