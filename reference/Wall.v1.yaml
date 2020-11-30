@@ -649,6 +649,7 @@ paths:
       tags:
         - delete
         - data-breach
+      description: Delete user data breach
 components:
   schemas:
     Model+Response+Article:
