@@ -1340,6 +1340,51 @@ components:
           type: integer
           description: |
             Мутно, но это тоже самое, что state в Guard модели
+    Model+Response+Achievement:
+      title: Model+Response+Achievement
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        description:
+          type: string
+        isUnlocked:
+          type: boolean
+    Model+Response+AchievementCategory:
+      title: Model+Response+AchievementCategory
+      type: object
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        achievements:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Achievement'
+    Response+Achievements:
+      title: Response+Achievements
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+AchievementCategory'
+      x-examples:
+        example-1:
+          status: string
+          result:
+            - id: 0
+              title: string
+              achievements:
+                - id: 0
+                  title: string
+                  description: string
+                  isUnlocked: true
   securitySchemes:
     Token:
       name: Authorization
