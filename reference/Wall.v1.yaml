@@ -588,7 +588,9 @@ paths:
   /guards/data-breach:
     get:
       summary: Your GET endpoint
-      tags: []
+      tags:
+        - get
+        - data-breach
       responses:
         '200':
           description: OK
@@ -1478,3 +1480,4 @@ tags:
   - name: vpn
   - name: guards
   - name: achievements
+  - name: data-breach
