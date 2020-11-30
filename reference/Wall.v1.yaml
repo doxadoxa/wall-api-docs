@@ -571,6 +571,20 @@ paths:
       description: ''
       tags:
         - guards
+  /achievements:
+    get:
+      summary: Get all user achievements
+      tags:
+        - get
+        - achievements
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Achievements'
+      operationId: get-achievements
 components:
   schemas:
     Model+Response+Article:
@@ -1413,3 +1427,4 @@ tags:
   - name: post
   - name: vpn
   - name: guards
+  - name: achievements
