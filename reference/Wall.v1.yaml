@@ -653,6 +653,9 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response+UserDataBreach'
       description: Delete user data breach
+      tags:
+        - data-breach
+        - delete
 components:
   schemas:
     Model+Response+Article:
