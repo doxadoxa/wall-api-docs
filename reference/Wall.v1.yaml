@@ -635,6 +635,24 @@ paths:
               example-1:
                 value:
                   email: string
+  '/guards/data-breach/{id}':
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
+    delete:
+      summary: ''
+      operationId: delete-guards-data-breach-id
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+UserDataBreach'
+      description: Delete user data breach
 components:
   schemas:
     Model+Response+Article:
