@@ -618,10 +618,24 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       description: Create user data breach
       tags:
         - post
         - data-breach
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model+Request+UserDataBreach'
+            examples:
+              example-1:
+                value:
+                  email: string
 components:
   schemas:
     Model+Response+Article:
@@ -1462,6 +1476,12 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+UserDataBreach'
+    Model+Request+UserDataBreach:
+      title: Model+Request+UserDataBreach
+      type: object
+      properties:
+        email:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
