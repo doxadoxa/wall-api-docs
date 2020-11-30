@@ -589,8 +589,8 @@ paths:
     get:
       summary: Get user data breaches
       tags:
-        - get
         - data-breach
+        - get
       responses:
         '200':
           description: OK
@@ -624,8 +624,8 @@ paths:
                 $ref: '#/components/schemas/Response+UserDataBreach'
       description: Create user data breach
       tags:
-        - post
         - data-breach
+        - post
       requestBody:
         content:
           application/json:
