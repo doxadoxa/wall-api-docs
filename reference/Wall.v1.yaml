@@ -1399,6 +1399,22 @@ components:
                   title: string
                   description: string
                   isUnlocked: true
+    Model+Response+UserDataBreach:
+      title: Model+Response+UserDataBreach
+      type: object
+      properties:
+        id:
+          type: string
+        email:
+          type: string
+        status:
+          type: integer
+        types:
+          type: array
+          items:
+            type: string
+        createdAt:
+          type: number
   securitySchemes:
     Token:
       name: Authorization
