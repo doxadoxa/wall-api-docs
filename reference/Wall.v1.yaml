@@ -587,7 +587,7 @@ paths:
       operationId: get-achievements
   /guards/data-breach:
     get:
-      summary: Your GET endpoint
+      summary: Get  user data breaches
       tags:
         - get
         - data-breach
