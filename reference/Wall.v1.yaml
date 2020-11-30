@@ -585,7 +585,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/Response+Achievements'
       operationId: get-achievements
-  /guards/data-breach:
+  '/guards/data-breach/{id}':
     get:
       summary: Get user data breaches
       tags:
@@ -611,7 +611,12 @@ paths:
                         createdAt: 0
       operationId: get-guards-data-breach
       description: Get user data breaches
-    parameters: []
+    parameters:
+      - schema:
+          type: string
+        name: id
+        in: path
+        required: true
     post:
       summary: Create user data breach
       operationId: post-guards-data-breach
@@ -635,6 +640,15 @@ paths:
               example-1:
                 value:
                   email: string
+    delete:
+      summary: Delete user data breach
+      operationId: delete-guards-data-breach
+      responses:
+        '200':
+          description: OK
+      tags:
+        - delete
+        - data-breach
 components:
   schemas:
     Model+Response+Article:
@@ -1529,3 +1543,4 @@ tags:
   - name: guards
   - name: achievements
   - name: data-breach
+  - name: delete
