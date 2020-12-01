@@ -656,6 +656,45 @@ paths:
       tags:
         - data-breach
         - delete
+  /guards/data-breach/list:
+    get:
+      summary: Get user data breaches by breach
+      tags:
+        - data-breach
+        - get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+UserDataBreachByBreach'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      - name: string
+                        title: string
+                        domain: string
+                        breachDate: 0
+                        addedDate: 0
+                        modifiedDate: 0
+                        pwnCount: 0
+                        description: string
+                        logoPath: string
+                        dataClasses:
+                          - '"Email addresses","IP addresses","Names","Passwords"'
+                        isVerified: string
+                        isFabricated: true
+                        isSensitive: true
+                        isRetired: null
+                        isSpamList: true
+                        emails:
+                          - id: 0
+                            email: string
+      operationId: get-guards-data-breach-list
+      description: ''
 components:
   schemas:
     Model+Response+Article:
@@ -1485,7 +1524,7 @@ components:
             0 - clear
             1 - Compromised
             2 - Unchecked
-        types:
+        breaches:
           type: array
           items:
             type: string
@@ -1525,6 +1564,65 @@ components:
             types:
               - string
             createdAt: 0
+    Model+Response+UserDataBreachByBreach:
+      title: Model+Response+UserDataBreachByBreach
+      type: object
+      properties:
+        name:
+          type: string
+        title:
+          type: string
+        domain:
+          type: string
+        breachDate:
+          type: number
+        addedDate:
+          type: number
+        modifiedDate:
+          type: number
+        pwnCount:
+          type: integer
+        description:
+          type: string
+        logoPath:
+          type: string
+        dataClasses:
+          type: array
+          description: '"Email addresses","IP addresses","Names","Passwords"'
+          items:
+            type: string
+            example: '"Email addresses","IP addresses","Names","Passwords"'
+        isVerified:
+          type: string
+        isFabricated:
+          type: boolean
+        isSensitive:
+          type: boolean
+        isRetired:
+          type:
+            - string
+            - boolean
+        isSpamList:
+          type: boolean
+        emails:
+          type: array
+          items:
+            type: object
+            properties:
+              id:
+                type: integer
+              email:
+                type: string
+    Response+UserDataBreachByBreach:
+      title: Response+UserDataBreachByBreach
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+UserDataBreachByBreach'
   securitySchemes:
     Token:
       name: Authorization
