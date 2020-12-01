@@ -610,7 +610,7 @@ paths:
                           - string
                         createdAt: 0
       operationId: get-guards-data-breach
-      description: Get user data breaches be email
+      description: Get user data breaches by email
     parameters: []
     post:
       summary: Create user data breach
