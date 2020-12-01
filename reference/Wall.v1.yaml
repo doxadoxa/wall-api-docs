@@ -1473,6 +1473,7 @@ components:
     Model+Response+UserDataBreach:
       title: Model+Response+UserDataBreach
       type: object
+      description: ''
       properties:
         id:
           type: string
@@ -1480,6 +1481,10 @@ components:
           type: string
         status:
           type: integer
+          description: |-
+            0 - clear
+            1 - Compromised
+            2 - Unchecked
         types:
           type: array
           items:
