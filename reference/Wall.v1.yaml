@@ -695,6 +695,22 @@ paths:
                             email: string
       operationId: get-guards-data-breach-list
       description: ''
+  /vpn/active-connections:
+    get:
+      summary: Get count of active connection
+      tags:
+        - vpn
+        - get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Vpn+Active+Connections'
+              examples: {}
+      operationId: get-vpn-active-connections
+      description: Get count of active connections
 components:
   schemas:
     Model+Response+Article:
@@ -1623,6 +1639,17 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Model+Response+UserDataBreachByBreach'
+    Response+Vpn+Active+Connections:
+      title: Response+Vpn+Active+Connections
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: object
+          properties:
+            count:
+              type: integer
   securitySchemes:
     Token:
       name: Authorization
