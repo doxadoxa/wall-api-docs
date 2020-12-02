@@ -697,7 +697,7 @@ paths:
       description: ''
   /vpn/active-connections:
     get:
-      summary: Get count of active connection
+      summary: Get count of active connections
       tags:
         - vpn
         - get
