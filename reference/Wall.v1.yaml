@@ -733,6 +733,12 @@ paths:
         - notifications
         - post
       description: Create notification
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Notification+Create'
+            examples: {}
 components:
   schemas:
     Model+Response+Article:
