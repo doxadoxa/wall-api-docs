@@ -267,6 +267,12 @@ paths:
                 $ref: '#/components/schemas/Response+Notifications'
       operationId: get-notifications
       description: Get last 30 notifications
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Notification+Create'
+            examples: {}
     post:
       summary: View notifications
       operationId: post-notifications
@@ -711,6 +717,22 @@ paths:
               examples: {}
       operationId: get-vpn-active-connections
       description: Get count of active connections
+  /notifications/create:
+    post:
+      summary: Create notification
+      operationId: post-notifications-create
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Notification'
+              examples: {}
+      tags:
+        - notifications
+        - post
+      description: Create notification
 components:
   schemas:
     Model+Response+Article:
@@ -1650,6 +1672,22 @@ components:
           properties:
             count:
               type: integer
+    Response+Notification:
+      title: Response+Notification
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Model+Response+Notification'
+        status:
+          type: string
+    Notification+Create:
+      title: Notification+Create
+      type: object
+      properties:
+        guardConnectionId:
+          type: integer
+        message:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
