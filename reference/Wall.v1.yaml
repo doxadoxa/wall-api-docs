@@ -1704,6 +1704,8 @@ components:
           type: integer
         title:
           type: string
+        priority:
+          type: integer
   securitySchemes:
     Token:
       name: Authorization
