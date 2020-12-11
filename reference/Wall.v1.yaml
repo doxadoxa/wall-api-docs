@@ -1692,7 +1692,7 @@ components:
       title: Notification+Create
       type: object
       properties:
-        guardConnectionId:
+        guardId:
           type: integer
         message:
           type: string
