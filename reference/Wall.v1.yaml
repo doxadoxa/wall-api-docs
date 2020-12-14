@@ -1480,6 +1480,14 @@ components:
                     type: array
                     items:
                       type: object
+                  actionType:
+                    type: integer
+                    description: |-
+                      Js = 0
+                      Webview = 1
+                    enum:
+                      - 0
+                      - 1
                 required:
                   - id
                   - type
