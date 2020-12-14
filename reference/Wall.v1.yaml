@@ -739,6 +739,21 @@ paths:
             schema:
               $ref: '#/components/schemas/Notification+Create'
             examples: {}
+  /me:
+    get:
+      summary: Get current user data
+      operationId: get-me
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User+Resource'
+      tags:
+        - auth
+        - user
+      description: ''
 components:
   schemas:
     Model+Response+Article:
@@ -841,10 +856,10 @@ components:
       properties:
         id:
           type: string
-        name:
-          type: string
         email:
           type: string
+        plan:
+          $ref: '#/components/schemas/Model+Response+UserPlan'
     Model+Response+Story:
       title: Model+Response+Story
       type: object
@@ -1706,6 +1721,41 @@ components:
           type: string
         priority:
           type: integer
+    Model+Response+UserPlan:
+      title: Model+Response+UserPlan
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        label:
+          type: string
+        price:
+          type: string
+        minPrice:
+          $ref: '#/components/schemas/Model+Response+Price'
+        maxPrice:
+          $ref: '#/components/schemas/Model+Response+Price'
+        features:
+          type: array
+          items: {}
+        hasTrial:
+          type: boolean
+        status:
+          type: integer
+        expiriedAt:
+          type: number
+    Model+Response+Price:
+      title: Model+Response+Price
+      type: object
+      properties:
+        amount:
+          type: number
+        currency:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
@@ -1737,3 +1787,4 @@ tags:
   - name: achievements
   - name: data-breach
   - name: delete
+  - name: user
