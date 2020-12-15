@@ -860,6 +860,8 @@ components:
           type: string
         plan:
           $ref: '#/components/schemas/Model+Response+UserPlan'
+        emailVerifiedAt:
+          type: number
     Model+Response+Story:
       title: Model+Response+Story
       type: object
