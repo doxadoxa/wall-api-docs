@@ -792,6 +792,22 @@ paths:
       tags:
         - auth
         - email
+  /plans:
+    get:
+      summary: Get all plans
+      tags:
+        - get
+        - plans
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Plans'
+              examples: {}
+      operationId: get-plans
+      description: Get all available plans
 components:
   schemas:
     Model+Response+Article:
@@ -1840,6 +1856,57 @@ components:
           $ref: '#/components/schemas/Model+Response+Message'
         status:
           type: string
+    Response+Plans:
+      title: Response+Plans
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Plan'
+        status:
+          type: string
+    Model+Response+Plan:
+      title: Model+Response+Plan
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        description:
+          type: string
+        label:
+          type: string
+        features:
+          type: array
+          items: {}
+        status:
+          type: integer
+        options:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Plan+Option'
+    Model+Response+Plan+Option:
+      title: Model+Response+Plan+Option
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        discount:
+          type: number
+        period:
+          type: integer
+        pricePerMonthWithoutDiscount:
+          type: number
+        pricePerMonthWithDiscount:
+          type: number
+        totalPriceWithoutDiscount:
+          type: number
+        totalPriceWithDiscount:
+          type: number
   securitySchemes:
     Token:
       name: Authorization
@@ -1873,3 +1940,4 @@ tags:
   - name: delete
   - name: user
   - name: email
+  - name: plans
