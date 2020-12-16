@@ -796,7 +796,6 @@ paths:
     get:
       summary: Get all plans
       tags:
-        - get
         - plans
       responses:
         '200':
