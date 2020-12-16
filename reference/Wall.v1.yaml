@@ -933,6 +933,14 @@ components:
           type: string
         actionText:
           type: string
+        template:
+          type: integer
+        imageWidth:
+          type: integer
+        imageHeight:
+          type: integer
+        imageBackground:
+          type: string
     Response+Stories:
       title: Response+Stories
       type: object
