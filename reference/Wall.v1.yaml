@@ -754,6 +754,38 @@ paths:
         - auth
         - user
       description: ''
+  /email/verify:
+    post:
+      summary: ''
+      operationId: post-email-verify
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Message'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model+Request+EmailVerification'
+  /email/create-verify:
+    post:
+      summary: ''
+      operationId: post-email-create-verify
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Message'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model+Request+CreateEmailVerification'
 components:
   schemas:
     Model+Response+Article:
@@ -1766,6 +1798,34 @@ components:
           type: number
         currency:
           type: string
+    Model+Request+EmailVerification:
+      title: Model+Request+EmailVerification
+      type: object
+      properties:
+        token:
+          type: string
+        email:
+          type: string
+    Model+Request+CreateEmailVerification:
+      title: Model+Request+CreateEmailVerification
+      type: object
+      properties:
+        email:
+          type: string
+    Model+Response+Message:
+      title: Model+Response+Message
+      type: object
+      properties:
+        message:
+          type: string
+    Response+Message:
+      title: Response+Message
+      type: object
+      properties:
+        result:
+          $ref: '#/components/schemas/Model+Response+Message'
+        status:
+          type: string
   securitySchemes:
     Token:
       name: Authorization
@@ -1798,3 +1858,4 @@ tags:
   - name: data-breach
   - name: delete
   - name: user
+  - name: email
