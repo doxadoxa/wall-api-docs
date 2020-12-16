@@ -1400,7 +1400,9 @@ components:
         status:
           type: string
     Request+Progress:
-      $ref: '#/components/schemas/Model+Request+Progress'
+      type: array
+      items:
+        $ref: '#/components/schemas/Model+Request+Progress'
     Response+Vpn+Connect:
       title: Response+Vpn+Connect
       type: object
