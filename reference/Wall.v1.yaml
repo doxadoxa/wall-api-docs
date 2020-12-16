@@ -756,7 +756,7 @@ paths:
       description: ''
   /email/verify:
     post:
-      summary: ''
+      summary: Email verify
       operationId: post-email-verify
       responses:
         '200':
@@ -772,7 +772,7 @@ paths:
               $ref: '#/components/schemas/Model+Request+EmailVerification'
   /email/create-verify:
     post:
-      summary: ''
+      summary: Create email verify
       operationId: post-email-create-verify
       responses:
         '200':
