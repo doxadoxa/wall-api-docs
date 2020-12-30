@@ -807,6 +807,29 @@ paths:
               examples: {}
       operationId: get-plans
       description: Get all available plans
+  /images:
+    get:
+      summary: All app images
+      tags:
+        - image
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+AppModelImages'
+              examples:
+                example-1:
+                  value:
+                    status: string
+                    result:
+                      lastUpdateAt: 0
+                      images:
+                        - image: string
+                          updatedAt: 0
+      operationId: get-images
+      description: All app images
 components:
   schemas:
     Model+Response+Article:
@@ -1908,6 +1931,29 @@ components:
           type: number
         totalPriceWithDiscount:
           type: number
+    Model+AppModelImage+Response:
+      title: Model+AppModelImage+Response
+      type: object
+      properties:
+        image:
+          type: string
+        updatedAt:
+          type: number
+    Response+AppModelImages:
+      title: Response+AppModelImages
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          type: object
+          properties:
+            lastUpdateAt:
+              type: number
+            images:
+              type: array
+              items:
+                $ref: '#/components/schemas/Model+AppModelImage+Response'
   securitySchemes:
     Token:
       name: Authorization
@@ -1942,3 +1988,4 @@ tags:
   - name: user
   - name: email
   - name: plans
+  - name: image
