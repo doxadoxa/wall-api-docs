@@ -1124,8 +1124,6 @@ components:
       title: Password+Change+Request
       type: object
       properties:
-        email:
-          type: string
         token:
           type: string
         password:
@@ -1137,6 +1135,8 @@ components:
       type: object
       properties:
         message:
+          type: string
+        email:
           type: string
     Model+Response+Course:
       title: Model+Response+Course
