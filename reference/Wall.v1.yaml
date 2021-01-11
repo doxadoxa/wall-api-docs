@@ -501,6 +501,12 @@ paths:
       tags:
         - vpn
         - post
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: hasBlockerMode
+    parameters: []
   '/vpn/connect/{country}':
     parameters:
       - schema:
@@ -523,6 +529,11 @@ paths:
       tags:
         - vpn
         - post
+      parameters:
+        - schema:
+            type: boolean
+          in: query
+          name: hasBlockerMode
   /guards:
     get:
       summary: Get all guards
