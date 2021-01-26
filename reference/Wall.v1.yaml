@@ -843,19 +843,8 @@ paths:
       description: All app images
   /vpn/review:
     post:
-      summary: ''
-      operationId: post-vpn-review
-      responses:
-        '200':
-          description: OK
-    get:
       summary: Create vpn quality review
-      description: Create vpn quality review
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Model+Request+VpnQualityReview'
+      operationId: post-vpn-review
       responses:
         '200':
           description: OK
@@ -863,6 +852,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Response+VpnQualityReview'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model+Request+VpnQualityReview'
+      description: Create vpn quality review
       tags:
         - vpn
         - review
