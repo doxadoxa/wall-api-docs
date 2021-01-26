@@ -841,6 +841,31 @@ paths:
                           updatedAt: 0
       operationId: get-images
       description: All app images
+  /vpn/review:
+    post:
+      summary: ''
+      operationId: post-vpn-review
+      responses:
+        '200':
+          description: OK
+    get:
+      summary: Create vpn quality review
+      description: Create vpn quality review
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Model+Request+VpnQualityReview'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+VpnQualityReview'
+      tags:
+        - vpn
+        - review
 components:
   schemas:
     Model+Response+Article:
@@ -1256,6 +1281,26 @@ components:
           content: string
           order: string
           isPassed: string
+    Model+Response+VpnQualityReview:
+      title: Model+Response+VpnQualityReview
+      type: object
+      properties:
+        user:
+          $ref: '#/components/schemas/User+Resource'
+        quality:
+          type: object
+          properties:
+            name:
+              type: string
+            value:
+              type: integer
+        comment:
+          type: string
+        server:
+          $ref: '#/components/schemas/Model+Response+Server'
+        createdAt:
+          type: number
+      description: ''
     Model+Response+Short+Chapter:
       title: Model+Response+Short+Chapter
       type: object
@@ -1975,6 +2020,24 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Model+AppModelImage+Response'
+    Model+Request+VpnQualityReview:
+      title: Model+Request+VpnQualityReview
+      type: object
+      properties:
+        vpnServerId:
+          type: integer
+        quality:
+          type: integer
+        comment:
+          type: string
+    Response+VpnQualityReview:
+      title: Response+VpnQualityReview
+      type: object
+      properties:
+        status:
+          type: string
+        result:
+          $ref: '#/components/schemas/Model+Response+VpnQualityReview'
   securitySchemes:
     Token:
       name: Authorization
@@ -2010,3 +2073,4 @@ tags:
   - name: email
   - name: plans
   - name: image
+  - name: review
