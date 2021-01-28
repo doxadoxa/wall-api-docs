@@ -882,6 +882,21 @@ paths:
       tags:
         - auth
         - logout
+  /guest/guards:
+    get:
+      summary: Get guest guards
+      tags:
+        - guards
+      responses: {}
+      operationId: get-guest-guards
+      description: Get guest guards.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Model+Response+Guard'
 components:
   schemas:
     Model+Response+Article:
@@ -2054,6 +2069,141 @@ components:
           type: string
         result:
           $ref: '#/components/schemas/Model+Response+VpnQualityReview'
+    Model+Response+GuestGuard:
+      description: Full Guard Response
+      type: object
+      title: Model+Response+GuestGuard
+      properties:
+        id:
+          type: number
+        title:
+          type: string
+          minLength: 1
+        label:
+          type: string
+          minLength: 1
+        icon:
+          type: string
+          minLength: 1
+        iconColor:
+          type: string
+          minLength: 1
+        description:
+          type: string
+          minLength: 1
+        shortDescription:
+          type: string
+          minLength: 1
+        status:
+          type: number
+        type:
+          type: number
+        settings:
+          type: object
+          required:
+            - jsFramework
+            - authUrl
+            - homeUrl
+            - features
+          properties:
+            jsFramework:
+              type: string
+              minLength: 1
+            authUrl:
+              type: string
+              minLength: 1
+            homeUrl:
+              type: string
+              minLength: 1
+            features:
+              type: array
+              uniqueItems: true
+              minItems: 1
+              items:
+                type: object
+                properties:
+                  id:
+                    type: number
+                  type:
+                    type: number
+                  title:
+                    type: string
+                    minLength: 1
+                  iconLabel:
+                    type: string
+                    minLength: 1
+                  image:
+                    type: string
+                    minLength: 1
+                  description:
+                    type: string
+                    minLength: 1
+                  actionText:
+                    type: string
+                    minLength: 1
+                  jsFrameworkFunction:
+                    type: string
+                    minLength: 1
+                  options:
+                    type: array
+                    uniqueItems: true
+                    minItems: 1
+                    items:
+                      type: object
+                      properties:
+                        content:
+                          type: string
+                          minLength: 1
+                        value:
+                          type: number
+                      required:
+                        - content
+                        - value
+                  allowedPlans:
+                    type: array
+                    items:
+                      type: object
+                  actionType:
+                    type: integer
+                    description: |-
+                      Js = 0
+                      Webview = 1
+                    enum:
+                      - 0
+                      - 1
+                required:
+                  - id
+                  - type
+                  - title
+                  - iconLabel
+                  - image
+                  - description
+                  - actionText
+                  - jsFrameworkFunction
+        onboarding:
+          type: object
+          properties:
+            title:
+              type: string
+            content:
+              type: string
+            actionText:
+              type: string
+            image:
+              type: string
+        category:
+          $ref: '#/components/schemas/Model+Response+GuardCategory'
+      required:
+        - id
+        - title
+        - label
+        - icon
+        - iconColor
+        - description
+        - shortDescription
+        - status
+        - type
+        - settings
   securitySchemes:
     Token:
       name: Authorization
