@@ -861,6 +861,19 @@ paths:
       tags:
         - vpn
         - review
+  /auth/logout:
+    post:
+      summary: Logout
+      operationId: post-auth-logout
+      responses:
+        '200':
+          description: OK
+      description: Logout
+      parameters:
+        - schema:
+            type: string
+          in: header
+          name: X-Device-ID
 components:
   schemas:
     Model+Response+Article:
