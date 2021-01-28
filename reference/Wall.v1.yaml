@@ -868,12 +868,20 @@ paths:
       responses:
         '200':
           description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: {}
       description: Logout
       parameters:
         - schema:
             type: string
           in: header
           name: X-Device-ID
+      tags:
+        - auth
+        - logout
 components:
   schemas:
     Model+Response+Article:
@@ -2082,3 +2090,4 @@ tags:
   - name: plans
   - name: image
   - name: review
+  - name: logout
