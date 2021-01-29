@@ -971,6 +971,7 @@ components:
     Register+Request:
       title: Register+Request
       type: object
+      description: Request for user registration.
       properties:
         email:
           type: string
@@ -980,12 +981,15 @@ components:
           type: string
         passwordConfirmation:
           type: string
+        guardIds:
+          type: array
+          items:
+            type: integer
       required:
         - email
         - name
         - password
         - passwordConfirmation
-      description: Request for user registration.
     Register+Response:
       title: Register+Response
       type: object
