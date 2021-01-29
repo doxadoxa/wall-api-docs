@@ -1699,6 +1699,10 @@ components:
               type: string
         category:
           $ref: '#/components/schemas/Model+Response+GuardCategory'
+        isOnboardingViewed:
+          type:
+            - boolean
+            - 'null'
       required:
         - id
         - title
