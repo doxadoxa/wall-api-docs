@@ -1677,6 +1677,8 @@ components:
                     enum:
                       - 0
                       - 1
+                  askForSaveData:
+                    type: boolean
                 required:
                   - id
                   - type
