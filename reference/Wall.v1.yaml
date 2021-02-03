@@ -981,10 +981,10 @@ components:
           type: string
         passwordConfirmation:
           type: string
-        guardIds:
+        guardLabels:
           type: array
           items:
-            type: integer
+            type: string
       required:
         - email
         - name
