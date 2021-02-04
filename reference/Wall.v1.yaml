@@ -897,6 +897,27 @@ paths:
               type: array
               items:
                 $ref: '#/components/schemas/Model+Response+Guard'
+  '/guards/{guardId}/onboarding':
+    parameters:
+      - schema:
+          type: integer
+        name: guardId
+        in: path
+        required: true
+    get:
+      summary: Set isOnboardingViewed
+      tags: []
+      responses: {}
+      operationId: get-guards-guardId-onboarding
+      description: Set isOnboardingViewed
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                value:
+                  type: boolean
 components:
   schemas:
     Model+Response+Article:
