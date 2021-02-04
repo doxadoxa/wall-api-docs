@@ -904,9 +904,10 @@ paths:
         name: guardId
         in: path
         required: true
-    get:
+    post:
       summary: Set isOnboardingViewed
-      tags: []
+      tags:
+        - guards
       responses: {}
       operationId: get-guards-guardId-onboarding
       description: Set isOnboardingViewed
