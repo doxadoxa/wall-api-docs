@@ -267,12 +267,6 @@ paths:
                 $ref: '#/components/schemas/Response+Notifications'
       operationId: get-notifications
       description: Get last 30 notifications
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/Notification+Create'
-            examples: {}
     post:
       summary: View notifications
       operationId: post-notifications
@@ -919,6 +913,28 @@ paths:
               properties:
                 value:
                   type: boolean
+  /notifications/all:
+    get:
+      summary: Get all notifications
+      tags:
+        - notifications
+        - get
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response+Notifications+All'
+              examples: {}
+      operationId: get-notifications-all
+      description: Get notifications by page (30 per)
+      parameters:
+        - schema:
+            type: integer
+          in: query
+          name: page
+          description: Page number
 components:
   schemas:
     Model+Response+Article:
@@ -2236,6 +2252,34 @@ components:
         - status
         - type
         - settings
+    Response+Notifications+All:
+      title: Response+Notifications+All
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Notification+All'
+        status:
+          type: string
+    Model+Response+Notification+All:
+      title: Model+Response+Notification+All
+      type: object
+      properties:
+        notifications:
+          type: array
+          items:
+            $ref: '#/components/schemas/Model+Response+Notification'
+        newNotifications:
+          type: integer
+        totalNotifications:
+          type: integer
+        currentPage:
+          type: integer
+        lastPage:
+          type:
+            - string
+            - integer
   securitySchemes:
     Token:
       name: Authorization
