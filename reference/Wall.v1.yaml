@@ -1023,6 +1023,8 @@ components:
           type: array
           items:
             type: string
+        dataBreachEmail:
+          type: string
       required:
         - email
         - name
@@ -1901,9 +1903,7 @@ components:
         isSensitive:
           type: boolean
         isRetired:
-          type:
-            - string
-            - boolean
+          type: boolean
         isSpamList:
           type: boolean
         emails:
@@ -1915,6 +1915,27 @@ components:
                 type: integer
               email:
                 type: string
+      x-examples:
+        example-1:
+          name: string
+          title: string
+          domain: string
+          breachDate: 0
+          addedDate: 0
+          modifiedDate: 0
+          pwnCount: 0
+          description: string
+          logoPath: string
+          dataClasses:
+            - '"Email addresses","IP addresses","Names","Passwords"'
+          isVerified: string
+          isFabricated: true
+          isSensitive: true
+          isRetired: true
+          isSpamList: true
+          emails:
+            - id: 0
+              email: string
     Response+UserDataBreachByBreach:
       title: Response+UserDataBreachByBreach
       type: object
