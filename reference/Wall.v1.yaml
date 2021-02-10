@@ -935,6 +935,47 @@ paths:
           in: query
           name: page
           description: Page number
+  /auth/delete-account/set:
+    post:
+      summary: Unset deleteAt
+      operationId: post-auth-delete-account-set
+      responses:
+        '200':
+          description: OK
+          headers: {}
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                  status:
+                    type: string
+      description: Unset deleteAt
+  /auth/delete-account/unset:
+    post:
+      summary: Unset deleteAt
+      operationId: post-auth-delete-account-unset
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  result:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                  status:
+                    type: string
+      description: Unset deleteAt
 components:
   schemas:
     Model+Response+Article:
