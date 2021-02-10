@@ -937,7 +937,7 @@ paths:
           description: Page number
   /auth/delete-account/set:
     post:
-      summary: Unset deleteAt
+      summary: Set deleteAt
       operationId: post-auth-delete-account-set
       responses:
         '200':
@@ -955,7 +955,7 @@ paths:
                         type: string
                   status:
                     type: string
-      description: Unset deleteAt
+      description: Set deleteAt
       tags:
         - auth
         - account
