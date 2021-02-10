@@ -956,6 +956,9 @@ paths:
                   status:
                     type: string
       description: Unset deleteAt
+      tags:
+        - auth
+        - account
   /auth/delete-account/unset:
     post:
       summary: Unset deleteAt
@@ -976,6 +979,9 @@ paths:
                   status:
                     type: string
       description: Unset deleteAt
+      tags:
+        - auth
+        - account
 components:
   schemas:
     Model+Response+Article:
@@ -2379,3 +2385,4 @@ tags:
   - name: image
   - name: review
   - name: logout
+  - name: account
