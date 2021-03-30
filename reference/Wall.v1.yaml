@@ -744,7 +744,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Notification+Create'
             examples: {}
-  /me:
+  /auth/me:
     get:
       summary: Get current user data
       operationId: get-me
@@ -759,6 +759,7 @@ paths:
         - auth
         - user
       description: ''
+    parameters: []
   /email/verify:
     post:
       summary: Email verify
