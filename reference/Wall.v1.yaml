@@ -204,9 +204,7 @@ paths:
       operationId: get-servers
       description: Get vpn servers
       tags:
-        - all
         - vpn
-        - get
     parameters: []
   '/vpn/servers/{id}/credentials':
     parameters:
